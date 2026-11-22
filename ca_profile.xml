@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Maintainer>
+<CommunityApplications>
   <Profile>Unraid templates for open-source projects by voidmind, starting with VoidLLM, a privacy-first, self-hosted LLM proxy and AI gateway. Issues and suggestions are welcome on GitHub.</Profile>
   <Icon>https://raw.githubusercontent.com/voidmind-io/unraid-templates/main/icons/voidllm.png</Icon>
   <WebPage>https://github.com/voidmind-io</WebPage>
-</Maintainer>
+</CommunityApplications>
