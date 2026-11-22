@@ -22,6 +22,7 @@ Models and providers can be managed in the web UI. For advanced setups place a [
   <CPUset/>
   <DonateText/>
   <DonateLink/>
+  <ExtraSearchTerms>llm ai gateway proxy openai ollama vllm anthropic claude chatgpt api-keys mcp litellm</ExtraSearchTerms>
   <Requires>The container runs as user 99:100 (nobody:users). If the container log shows a permission error for /data, run [code]chown -R 99:100 /mnt/user/appdata/voidllm[/code] once in the Unraid terminal.</Requires>
   <Config Name="WebUI / API Port" Target="8080" Default="8080" Mode="tcp" Description="OpenAI-compatible proxy (/v1), web UI, admin API and health checks (/healthz, /readyz)." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
   <Config Name="Admin Port (optional)" Target="8443" Default="8443" Mode="tcp" Description="Separate port for admin API and UI. Only active if server.admin.port is set to 8443 in voidllm.yaml. Unused by default." Type="Port" Display="advanced" Required="false" Mask="false">8443</Config>
