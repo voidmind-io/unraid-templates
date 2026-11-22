@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>VoidPort</Name>
+  <Repository>ghcr.io/voidmind-io/voidport:latest</Repository>
+  <Registry>https://github.com/voidmind-io/voidport.io/pkgs/container/voidport</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Privileged>false</Privileged>
+  <Support>https://voidport.app/docs</Support>
+  <Project>https://voidport.app</Project>
+  <ReadMe>https://github.com/voidmind-io/unraid-templates#voidport-notes</ReadMe>
+  <Overview>VoidPort makes a server on your Unraid box reachable from the internet without port forwarding, also behind CGNAT: game servers (Minecraft, Valheim, ...), web apps, Home Assistant, anything TCP or UDP. Players connect to a public address like nbg1.voidport.net:30123.[br][br]
+Create a tunnel at voidport.app/dashboard (a subscription is needed), paste its token and enter where your server listens. The container only connects out to the relay; it publishes no ports.[br][br]
+Optional: HTTPS on your own domain with an automatic Let's Encrypt certificate.</Overview>
+  <Category>Network:Other GameServers:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/voidmind-io/unraid-templates/main/templates/voidport.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/voidmind-io/unraid-templates/main/icons/voidport.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>A VoidPort subscription and a tunnel created at voidport.app/dashboard.</Requires>
+  <ExtraSearchTerms>tunnel port-forwarding cgnat minecraft game-server playit ngrok</ExtraSearchTerms>
+  <Config Name="Tunnel token" Target="VOIDPORT_TOKEN" Default="" Mode="" Description="Token of your tunnel from voidport.app/dashboard. Several tokens separated by commas run together (e.g. game + voice chat)." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Target host" Target="VOIDPORT_HOST" Default="" Mode="" Description="Where your server listens: the LAN IP of this Unraid server (e.g. 192.168.1.10) if its port is published or it uses host networking, or the container name if VoidPort and the server share a custom Docker network (Network Type: that network)." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Local port" Target="VOIDPORT_PORT" Default="" Mode="" Description="Optional. The port your server listens on at the target host, if it differs from the local port saved with the tunnel (e.g. a container port published as 8081). Leave empty to use the tunnel's port. Only with a single token." Type="Variable" Display="always" Required="false" Mask="false"/>
+</Container>
