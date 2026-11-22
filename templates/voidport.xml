@@ -6,7 +6,7 @@
   <Network>bridge</Network>
   <MyIP/>
   <Privileged>false</Privileged>
-  <Support>https://voidport.app/docs</Support>
+  <Support>https://github.com/voidmind-io/unraid-templates/issues</Support>
   <Project>https://voidport.app</Project>
   <ReadMe>https://github.com/voidmind-io/unraid-templates#voidport-notes</ReadMe>
   <Overview>VoidPort makes a server on your Unraid box reachable from the internet without port forwarding, also behind CGNAT: game servers (Minecraft, Valheim, ...), web apps, Home Assistant, anything TCP or UDP. Players connect to a public address like nbg1.voidport.net:30123.[br][br]
