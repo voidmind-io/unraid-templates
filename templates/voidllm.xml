@@ -7,7 +7,7 @@
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://github.com/voidmind-io/unraid-templates/issues</Support>
+  <Support>https://github.com/voidmind-io/voidllm/issues</Support>
   <Project>https://voidllm.ai</Project>
   <Overview>Privacy-first LLM proxy and AI gateway. One OpenAI-compatible endpoint in front of vLLM, Ollama, OpenAI, Anthropic, Azure, Bedrock and other providers, with load balancing, multi-provider routing, API key management, usage tracking, rate limiting and an MCP gateway. Self-hosted, zero knowledge of your prompts.[br][br]
 [b]First start:[/b] Set an Encryption Key and an Admin Key (generate both with [code]openssl rand -base64 32[/code]). On the first start VoidLLM prints the UI login (email + password) and your first API key ([code]vl_uk_...[/code]) to the container log, exactly once. Open the log right after starting and save them.[br][br]
