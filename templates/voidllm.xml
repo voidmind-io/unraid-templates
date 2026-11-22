@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>VoidLLM</Name>
+  <Repository>ghcr.io/voidmind-io/voidllm:latest</Repository>
+  <Registry>https://github.com/voidmind-io/voidllm/pkgs/container/voidllm</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/voidmind-io/voidllm/issues</Support>
+  <Project>https://voidllm.ai</Project>
+  <Overview>Privacy-first LLM proxy and AI gateway. One OpenAI-compatible endpoint in front of vLLM, Ollama, OpenAI, Anthropic, Azure, Bedrock and other providers, with load balancing, multi-provider routing, API key management, usage tracking, rate limiting and an MCP gateway. Self-hosted, zero knowledge of your prompts.[br][br]
+[b]First start:[/b] Set an Encryption Key and an Admin Key (generate both with [code]openssl rand -base64 32[/code]). On the first start VoidLLM prints the UI login (email + password) and your first API key ([code]vl_uk_...[/code]) to the container log, exactly once. Open the log right after starting and save them.[br][br]
+[b]Important:[/b] Never change the Encryption Key after the first start, otherwise all stored upstream API keys become unreadable.[br][br]
+Models and providers can be managed in the web UI. For advanced setups place a [code]voidllm.yaml[/code] in the config folder (see voidllm.yaml.example in the project repository). An empty config folder is fine.</Overview>
+  <Category>AI: Network:Proxy Tools:Utilities</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/voidmind-io/unraid-templates/main/templates/voidllm.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/voidmind-io/unraid-templates/main/icons/voidllm.png</Icon>
+  <ExtraParams>--user 99:100 --health-cmd "wget -qO- http://127.0.0.1:8080/healthz || exit 1" --health-interval 30s --health-timeout 5s --health-retries 3</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>The container runs as user 99:100 (nobody:users). If the container log shows a permission error for /data, run [code]chown -R 99:100 /mnt/user/appdata/voidllm[/code] once in the Unraid terminal.</Requires>
+  <Config Name="WebUI / API Port" Target="8080" Default="8080" Mode="tcp" Description="OpenAI-compatible proxy (/v1), web UI, admin API and health checks (/healthz, /readyz)." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="Admin Port (optional)" Target="8443" Default="8443" Mode="tcp" Description="Separate port for admin API and UI. Only active if server.admin.port is set to 8443 in voidllm.yaml. Unused by default." Type="Port" Display="advanced" Required="false" Mask="false">8443</Config>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/voidllm/data" Mode="rw" Description="SQLite database with users, keys and usage data. Without this volume everything is lost when the container is recreated." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/voidllm/data</Config>
+  <Config Name="Config Folder" Target="/etc/voidllm" Default="/mnt/user/appdata/voidllm/config" Mode="ro" Description="Optional. Put voidllm.yaml (and voidllm.license.jwt for Enterprise) here. Leave the folder empty to run with defaults and manage everything in the UI." Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/voidllm/config</Config>
+  <Config Name="Encryption Key" Target="VOIDLLM_ENCRYPTION_KEY" Default="" Mode="" Description="Required. AES-256 key for stored upstream API keys, 32 bytes base64. Generate with: openssl rand -base64 32. Set once, NEVER change it afterwards." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Admin Key" Target="VOIDLLM_ADMIN_KEY" Default="" Mode="" Description="Bootstrap key (min. 32 characters), only used on the first start with an empty database to create the first admin. Generate with: openssl rand -base64 32. The real login and vl_uk_ API key appear once in the container log." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="License (Enterprise)" Target="VOIDLLM_LICENSE" Default="" Mode="" Description="Optional Enterprise license JWT. Leave empty for the free edition." Type="Variable" Display="advanced" Required="false" Mask="true"/>
+</Container>
