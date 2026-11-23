@@ -6,7 +6,7 @@ Unraid Docker templates for [voidmind](https://github.com/voidmind-io) projects,
 | App | Image | Template |
 |---|---|---|
 | [VoidLLM](https://github.com/voidmind-io/voidllm): privacy-first LLM proxy and AI gateway | `ghcr.io/voidmind-io/voidllm` | [`templates/voidllm.xml`](templates/voidllm.xml) |
-| [VoidPort](https://voidport.app): expose servers without port forwarding, also behind CGNAT | `ghcr.io/voidmind-io/voidport` | [`templates/voidport.xml`](templates/voidport.xml) |
+| [VoidPort](https://github.com/voidmind-io/voidport-cli): expose servers without port forwarding, also behind CGNAT | `ghcr.io/voidmind-io/voidport` | [`templates/voidport.xml`](templates/voidport.xml) |
 
 ## Installation
 
